@@ -14,7 +14,11 @@ class HomeApp extends StatefulWidget {
 class _HomeAppState extends State<HomeApp> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Crypto App'),
+        centerTitle: true,
+      ),
       body: Center(
         child: Text('Crypto App'),
       ),
