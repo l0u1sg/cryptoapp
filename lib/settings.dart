@@ -20,6 +20,10 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text('Settings'),
+          centerTitle: true,
+        ),
         body: Center(
             child: FutureBuilder<PackageInfo>(
                 future: _getPackageInfo(),
