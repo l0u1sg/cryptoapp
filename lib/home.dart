@@ -16,10 +16,10 @@ class _HomeAppState extends State<HomeApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crypto App'),
+        title: const Text('Crypto App'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text('Crypto App'),
       ),
     );
