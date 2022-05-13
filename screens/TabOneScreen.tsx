@@ -1,15 +1,14 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
-
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import logo from '../assets/images/logo.png'
+export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Image source={logo} style={styles.logo}></Image>
+      <Text style={styles.instruction}>To share a photo from your phone with a friend, just press the button below!</Text>
+      <TouchableOpacity onPress={() => alert('hello world')} style={styles.button}>
+        <Text style={styles.buttonText}>Pick a photo</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -17,16 +16,27 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
+  logo: {
+    width: 305,
+    height: 159,
+    marginBottom: 10,
+  },
+  instruction: {
+    color: '#888',
+    fontSize: 18,
+    marginHorizontal: 15,
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
     fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+    color: '#fff'
+  }
 });
