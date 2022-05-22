@@ -44,6 +44,9 @@ export default function App() {
         <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
           <Text style={styles.buttonText}>Share this photo</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => alert("This feature is not implemented yet!")} style={styles.button}>
+          <Text style={styles.buttonText}>Upload to server</Text>
+        </TouchableOpacity>
       </View>
     );
   }
