@@ -1,8 +1,9 @@
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
+import text from './TabTwoScreen'
 
 export default function App() {
   let [selectedImage, setSelectedImage] = React.useState(null);
@@ -37,6 +38,34 @@ export default function App() {
     Sharing.shareAsync(selectedImage.remoteUri || selectedImage.localUri);
   };
 
+  function ShareToAPI(instanceURI: any, apiKey: any) {
+    instanceURI = instanceURI;
+    apiKey = apiKey;
+    if (apiKey == "") {
+      Alert.prompt(
+        'Enter your API key',
+        'Go to your XBackBones instances to find your API key',
+        [
+          { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+          { text: 'OK', onPress: apiKey => apiKey == apiKey },
+        ]
+      )
+    }
+    if (instanceURI = "") {
+      Alert.prompt(
+        'Enter your instance URI',
+        'Go to your XBackBones instances to find your instance URI',
+        [
+          { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+          { text: 'OK', onPress: instanceURI => instanceURI == instanceURI },
+        ]
+      )
+    }
+    else {
+      console.log('Hello')
+    }
+  }
+
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
@@ -44,7 +73,7 @@ export default function App() {
         <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
           <Text style={styles.buttonText}>Share this photo</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => alert("This feature is not implemented yet!")} style={styles.button}>
+        <TouchableOpacity onPress={() => ShareToAPI("", "")} style={styles.button}>
           <Text style={styles.buttonText}>Upload to server</Text>
         </TouchableOpacity>
       </View>
